@@ -8,10 +8,10 @@ const userSchema = new mongoose.Schema({
     require: true,
     type: String,
   },
-  place: {
+  place: [{
     type: String,
     require: true,
-  },
+  }],
   password: {
     type: String,
     require: true,
@@ -24,7 +24,14 @@ const userSchema = new mongoose.Schema({
     type: Number,
     require: true,
   },
+  isAdmin: {
+    type: Boolean,
+  },
+  profileId:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"profile"
+  }
 });
 
 const User = mongoose.model("user", userSchema);
-module.exports = {User,userSchema};
+module.exports = { User, userSchema };
